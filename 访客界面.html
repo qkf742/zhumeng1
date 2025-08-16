@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- 字符编码 -->
+  <meta charset="UTF-8">
+  <!-- 视口设置，确保页面在不同设备上自适应 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <!-- 页面标题 -->
+  <title>鼎伴学华中交付中心 · 智慧启航</title>
+  <!-- SEO 关键词 -->
+  <meta name="keywords" content="鼎伴学,华中交付中心,教育科技,K12,智慧课堂">
+  <!-- 页面描述 -->
+  <meta name="description" content="鼎伴学华中交付中心携手智慧启航教育，专注教育数字化交付与K12精品课程，共助华中地区教育高质量发展。">
+  <!-- 引入Tailwind CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+  <!-- 引入Noto Sans SC字体 -->
+  <link href="https://fonts.loli.net/css?family=Noto+Sans+SC:400,500,700&display=swap" rel="stylesheet">
+  <!-- 自定义样式 -->
+<style>
+  /* 设置全局字体和背景渐变 */
+  body {
+    font-family: 'Noto Sans SC', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  }
+
+  /* 粒子效果的容器样式 */
+  .particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+
+  /* 渐变文本样式 */
+  .gradient-text {
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* 卡片悬停效果 */
+  .card-hover {
+    transition: all 0.3s ease;
+  }
+  .card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(228, 11, 11, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+
+  /* 导航链接样式 */
+  .nav-link {
+    position: relative;
+  }
+  .nav-link:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    transition: width 0.3s ease;
+  }
+  .nav-link:hover:after {
+    width: 100%;
+  }
+
+  /* 动态边框样式 */
+.dynamic-border {
+  position: relative;
+  overflow: hidden;
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.dynamic-border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #fff;
+  border-radius: 12px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.dynamic-border:hover::before {
+  opacity: 1;
+}
+
+.dynamic-border:hover {
+  border-color: black;
+}
+
+/* 主管老师卡片样式 */
+.teacher-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 30px 20px 25px;
+  text-align: center;
+  box-shadow: 0 4px 24px rgba(164, 27, 27, 0.06);
+  transition: transform 0.4s, box-shadow 0.4s;
+}
+
+.teacher-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 0 auto 18px;
+  object-fit: cover;
+}
+
+.teacher-name {
+  font-size: 1.5rem;
+  color: black;
+  margin-bottom: 4px;
+}
+
+.teacher-title {
+  font-size: 1rem;
+  color: #222;
+  margin-bottom: 4px;
+}
+
+.teacher-desc {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+
+
+
+
+
+
+/* 动态边框样式 */
+.dynamic-border {
+  position: relative;
+  overflow: hidden;
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease, transform 0.4s, box-shadow 0.4s;
+}
+
+.dynamic-border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #fff;
+  border-radius: 12px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.dynamic-border:hover::before {
+  opacity: 1;
+}
+
+.dynamic-border:hover {
+  border-color: #3b82f6;
+  transform: translateY(-6px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+  
+</style>
+</head>
+<body class="min-h-screen">
+  <!-- 粒子效果容器 -->
+  <div id="particles-js" class="particles-js"></div>
+  
+  <!-- 导航栏 -->
+  <header class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <!-- 网站logo -->
+      <a href="./" class="text-2xl font-bold gradient-text">鼎伴学华中交付中心</a>
+      <!-- 移动端菜单切换按钮 -->
+      <button id="menuToggle" class="md:hidden text-gray-700 focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+      <!-- 导航链接 -->
+      <nav id="navMenu" class="hidden md:flex space-x-8">
+        <a href="#home" class="nav-link text-gray-700 hover:text-indigo-600">首页</a>
+        <a href="#teachers" class="nav-link text-gray-700 hover:text-indigo-600">交付团队</a>
+        <a href="#courses" class="nav-link text-gray-700 hover:text-indigo-600">课程板块</a>
+        <a href="#news" class="nav-link text-gray-700 hover:text-indigo-600">伴学教程</a>
+        <a href="#contact" class="nav-link text-gray-700 hover:text-indigo-600">联系我们</a>
+        <!-- 按钮链接 -->
+        <a href="http://manage.dingbanxue.com/Login/Index" target="_blank" class="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2 rounded-md hover:shadow-lg transition-all">运营平台</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 英雄区域 -->
+  <section id="home" class="py-20 md:py-32 relative overflow-hidden">
+    <div class="container mx-auto px-4 text-center">
+      <!-- 标题 -->
+      <h1 class="text-4xl md:text-6xl font-bold mb-6 text-gray-800">让每个孩子都能享受优质数字化教育</h1>
+      <!-- 描述 -->
+      <p class="text-xl md:text-2xl text-gray-600 mb-10 max-w-3xl mx-auto">鼎伴学华中区逐梦师团队+智慧启航教育+专注教育数字化精品课程</p>
+      <!-- 调用行动按钮 -->
+      <a href="#courses" class="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-3 rounded-md text-lg font-medium hover:shadow-xl transition-all">立即了解</a>
+    </div>
+  </section>
+
+  <!-- 交付团队 -->
+  <section id="teachers" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <!-- 标题 -->
+      <h2 class="text-5xl font-bold text-center mb-12 text-gray-800">华中区交付团队</h2>
+      
+     <!-- 总负责人 -->
+<div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-6 mb-12 shadow-md">
+  <div class="flex flex-col md:flex-row gap-6">
+    <!-- 左侧：图片及姓名职位 -->
+    <div class="flex-shrink-0 flex flex-col items-center">
+      <!-- 总负责人图片 -->
+      <img src="images/总负责人.jpg" alt="宋老师" class="w-32 h-32 rounded-full object-cover border-4 border-white shadow-md">
+      <h3 class="text-xl font-bold mt-4 text-gray-800">宋老师</h3>
+      <p class="text-purple-600">华中区交付中心负责人</p>
+    </div>
+    
+    <!-- 中间：个人简介 -->
+    <div class="flex-1 grid md:grid-cols-2 gap-6">
+      <div class="bg-white p-6 rounded-lg shadow-sm dynamic-border">
+        <!-- 标题 -->
+        <h3 class="text-xl font-bold mb-4 text-gray-800">负责人介绍</h3>
+        <!-- 个人简介列表 -->
+        <ul class="space-y-2 text-gray-600">
+          <li class="flex items-start">
+            <span class="text-purple-500 mr-2">•</span> 逐梦师教育科技有限公司创始人
+          </li>
+          <li class="flex items-start">
+            <span class="text-purple-500 mr-2">•</span> 高考志愿规划填报师
+          </li>
+          <li class="flex items-start">
+            <span class="text-purple-500 mr-2">•</span> 青少年素质教育领航人
+          </li>
+          <li class="flex items-start">
+            <span class="text-purple-500 mr-2">•</span> 曾参与新加坡国立大学交流项目
+          </li>
+          <li class="flex items-start">
+            <span class="text-purple-500 mr-2">•</span> 帮助数千名孩子英语能力提升
+          </li>
+          <li class="flex items-start">
+            <span class="text-purple-500 mr-2">•</span> 帮助数百名个体老师轻创业
+          </li>
+        </ul>
+      </div>
+      
+      <!-- 右侧：团队成就 -->
+      <div class="bg-white p-6 rounded-lg shadow-sm dynamic-border">
+        <!-- 标题 -->
+        <h3 class="text-xl font-bold mb-4 text-gray-800">团队成就</h3>
+        <!-- 团队成就列表 -->
+        <ul class="space-y-2 text-gray-600">
+          <li class="flex items-start">
+            <span class="text-blue-500 mr-2">•</span> 鼎伴学最早成立的集中交付团队之一
+          </li>
+          <li class="flex items-start">
+            <span class="text-blue-500 mr-2">•</span> 鼎伴学2024年发展速度最快的交付团队之一
+          </li>
+          <li class="flex items-start">
+            <span class="text-blue-500 mr-2">•</span> 2024年助力山东、河南分公司成立
+          </li>
+          <li class="flex items-start">
+            <span class="text-blue-500 mr-2">•</span> 2024年助力10+事业部成立
+          </li>
+          <li class="flex items-start">
+            <span class="text-blue-500 mr-2">•</span> 2024年累计帮助5000+孩子英语提升
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+      
+      <!-- 主管老师 -->
+<h3 class="sub-title text-5xl font-bold mb-8 text-center text-gray-800">教学部学管</h3>
+<div class="teacher-grid grid grid-cols-2 md:grid-cols-4 gap-6">
+  <!-- 8 位老师卡片 -->
+  <div class="teacher-card dynamic-border bg-white rounded-lg overflow-hidden shadow-md card-hover">
+    <img src="images/a1.jpg" alt="秦铭彗" class="avatar w-24 h-24 rounded-full mx-auto mt-4" loading="eager">
+    <div class="p-4">
+      <h4 class="teacher-name font-bold text-lg text-gray-800">秦铭彗</h4>
+      <p class="teacher-title text-blue-500">教学一部学管</p>
+      <p class="teacher-desc text-gray-600 mt-2">金牌教练</p>
+    </div>
+  </div>
+  <div class="teacher-card dynamic-border bg-white rounded-lg overflow-hidden shadow-md card-hover">
+    <img src="images/a2.jpg" alt="裴海彬" class="avatar w-24 h-24 rounded-full mx-auto mt-4" loading="eager">
+    <div class="p-4">
+      <h4 class="teacher-name font-bold text-lg text-gray-800">裴海彬</h4>
+      <p class="teacher-title text-blue-500">教学二部学管</p>
+      <p class="teacher-desc text-gray-600 mt-2">金牌教练</p>
+    </div>
+  </div>
+  <div class="teacher-card dynamic-border bg-white rounded-lg overflow-hidden shadow-md card-hover">
+    <img src="images/a3.jpg" alt="秦恺羚" class="avatar w-24 h-24 rounded-full mx-auto mt-4" loading="eager">
+    <div class="p-4">
+      <h4 class="teacher-name font-bold text-lg text-gray-800">秦恺羚</h4>
+      <p class="teacher-title text-blue-500">教学三部学管</p>
+      <p class="teacher-desc text-gray-600 mt-2">金牌教练</p>
+    </div>
+  </div>
+  <div class="teacher-card dynamic-border bg-white rounded-lg overflow-hidden shadow-md card-hover">
+    <img src="images/a4.jpg" alt="林彤彤" class="avatar w-24 h-24 rounded-full mx-auto mt-4" loading="eager">
+    <div class="p-4">
+      <h4 class="teacher-name font-bold text-lg text-gray-800">林彤彤</h4>
+      <p class="teacher-title text-blue-500">教学四部学管</p>
+      <p class="teacher-desc text-gray-600 mt-2">金牌教练</p>
+    </div>
+  </div>
+  <div class="teacher-card dynamic-border bg-white rounded-lg overflow-hidden shadow-md card-hover">
+    <img src="images/a5.jpg" alt="刘佳琪" class="avatar w-24 h-24 rounded-full mx-auto mt-4" loading="eager">
+    <div class="p-4">
+      <h4 class="teacher-name font-bold text-lg text-gray-800">刘佳琪</h4>
+      <p class="teacher-title text-blue-500">教学五部学管</p>
+      <p class="teacher-desc text-gray-600 mt-2">金牌教练</p>
+    </div>
+  </div>
+  <div class="teacher-card dynamic-border bg-white rounded-lg overflow-hidden shadow-md card-hover">
+    <img src="images/a6.jpg" alt="汤子怡" class="avatar w-24 h-24 rounded-full mx-auto mt-4" loading="eager">
+    <div class="p-4">
+      <h4 class="teacher-name font-bold text-lg text-gray-800">汤子怡</h4>
+      <p class="teacher-title text-blue-500">教学六部学管</p>
+      <p class="teacher-desc text-gray-600 mt-2">金牌教练</p>
+    </div>
+  </div>
+  <div class="teacher-card dynamic-border bg-white rounded-lg overflow-hidden shadow-md card-hover">
+    <img src="images/a7.jpg" alt="刘晶华" class="avatar w-24 h-24 rounded-full mx-auto mt-4" loading="eager">
+    <div class="p-4">
+      <h4 class="teacher-name font-bold text-lg text-gray-800">刘晶华</h4>
+      <p class="teacher-title text-blue-500">教学七部学管</p>
+      <p class="teacher-desc text-gray-600 mt-2">金牌教练</p>
+    </div>
+  </div>
+  <div class="teacher-card dynamic-border bg-white rounded-lg overflow-hidden shadow-md card-hover">
+    <img src="images/a8.jpg" alt="李继芹" class="avatar w-24 h-24 rounded-full mx-auto mt-4" loading="eager">
+    <div class="p-4">
+      <h4 class="teacher-name font-bold text-lg text-gray-800">李继芹</h4>
+      <p class="teacher-title text-blue-500">教学八部学管</p>
+      <p class="teacher-desc text-gray-600 mt-2">金牌教练</p>
+    </div>
+  </div>
+</div>
+  </section>
+
+  <!-- 课程板块 -->
+  <section id="courses" class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <!-- 标题 -->
+      <h2 class="text-5xl font-bold text-center mb-12 text-gray-800">课程板块</h2>
+      <!-- 课程卡片 -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-white rounded-lg overflow-hidden shadow-md card-hover">
+          <a href="单词速记/单词速记.html.html" class="block">
+            <img src="images/b1.jpg" alt="单词速记" class="w-full h-48 object-cover">
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2 text-gray-800">单词速记</h3>
+              <p class="text-gray-600">科学记单词，快速提成绩</p>
+            </div>
+          </a>
+        </div>
+        <div class="bg-white rounded-lg overflow-hidden shadow-md card-hover">
+          <a href="专项突破/专项突破.html" class="block">
+            <img src="images/b2.jpg" alt="专项突破" class="w-full h-48 object-cover">
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2 text-gray-800">专项突破</h3>
+              <p class="text-gray-600">全面激发学习潜能，科学培养学习习惯</p>
+            </div>
+          </a>
+        </div>
+        <div class="bg-white rounded-lg overflow-hidden shadow-md card-hover">
+          <a href="AI组卷/AI组卷.html" class="block">
+            <img src="images/b3.jpg" alt="AI组卷" class="w-full h-48 object-cover">
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2 text-gray-800">AI组卷</h3>
+              <p class="text-gray-600">让学生在阅读中记单词、记单词中学阅读</p>
+            </div>
+          </a>
+        </div>
+        <div class="bg-white rounded-lg overflow-hidden shadow-md card-hover">
+          <a href="智慧写作/智慧写作.html" class="block">
+            <img src="images/b4.jpg" alt="智慧写作" class="w-full h-48 object-cover">
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2 text-gray-800">智慧写作</h3>
+              <p class="text-gray-600">解决生难、易混淆词记忆应用问题</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 伴学教程 -->
+  <section id="news" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row gap-8">
+        <!-- 教学操作指引 -->
+        <div class="flex-1">
+          <h2 class="text-2xl font-bold mb-6 text-gray-800">
+            <a href="5.html" target="_blank" class="hover:text-blue-600 transition-colors">教学操作指引</a>
+          </h2>
+          <ul class="space-y-4">
+            <li class="border-b pb-4">
+              <a href="开课流程指引.html" class="text-lg font-medium text-gray-800 hover:text-blue-600 transition-colors">开课流程指引</a>
+              <span class="block text-gray-500 text-sm mt-1">2024-08-01</span>
+            </li>
+            <li class="border-b pb-4">
+              <a href="#" class="text-lg font-medium text-gray-800 hover:text-blue-600 transition-colors">教学操作步骤</a>
+              <span class="block text-gray-500 text-sm mt-1">2024-07-25</span>
+            </li>
+            <li class="border-b pb-4">
+              <a href="#" class="text-lg font-medium text-gray-800 hover:text-blue-600 transition-colors">应对突发情况</a>
+              <span class="block text-gray-500 text-sm mt-1">2024-07-25</span>
+            </li>
+          </ul>
+        </div>
+        <!-- 实时动态 -->
+        <div class="md:w-1/3">
+          <h2 class="text-2xl font-bold mb-6 text-gray-800">实时动态</h2>
+          <ul class="bg-gray-50 p-6 rounded-lg space-y-4">
+            <li class="flex items-start">
+              <span class="text-blue-500 mr-2">•</span> 
+              <a href="优秀教练/优秀教练.html" class="hover:underline">华中区八月优秀教练名单已发布</a>
+            </li>
+            <li class="flex items-start">
+              <span class="text-blue-500 mr-2">•</span> 2025 教学部咨汛
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 联系我们 -->
+  <section id="contact" class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <!-- 标题 -->
+      <h2 class="text-5xl font-bold text-center mb-12 text-gray-800">联系我们</h2>
+      <!-- 联系方式和表单 -->
+      <div class="flex flex-col lg:flex-row gap-8">
+        <!-- 联系方式 -->
+        <div class="lg:w-1/3 bg-white p-8 rounded-lg shadow-md">
+          <h3 class="text-xl font-bold mb-6 text-gray-800">联系方式</h3>
+          <ul class="space-y-4 text-gray-600">
+            <li class="flex items-start">
+              <span class="font-bold text-gray-800 mr-2">总部地址：</span> 深圳创新科技广场一期
+            </li>
+            <li class="flex items-start">
+              <span class="font-bold text-gray-800 mr-2">服务热线：</span> 400-888-8888
+            </li>
+            <li class="flex items-start">
+              <span class="font-bold text-gray-800 mr-2">商务合作：</span> business@zhiyun.com
+            </li>
+            <li class="flex items-start">
+              <span class="font-bold text-gray-800 mr-2">工作时间：</span> 周一至周五 9:00-18:00
+            </li>
+          </ul>
+        </div>
+        <!-- 联系表单 -->
+        <div class="lg:w-2/3 bg-white p-8 rounded-lg shadow-md">
+          <form id="contactForm" class="space-y-6">
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">姓名</label>
+                <input type="text" id="name" name="name" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+              </div>
+              <div>
+                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">邮箱</label>
+                <input type="email" id="email" name="email" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+              </div>
+              <div>
+                <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">电话</label>
+                <input type="tel" id="phone" name="phone" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+              </div>
+              <div>
+                <label for="age" class="block text-sm font-medium text-gray-700 mb-1">年龄</label>
+                <input type="text" id="age" name="age" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+              </div>
+            </div>
+            <div>
+              <label for="message" class="block text-sm font-medium text-gray-700 mb-1">需求描述</label>
+              <textarea id="message" name="message" rows="4" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"></textarea>
+            </div>
+            <button type="submit" class="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-3 px-6 rounded-md font-medium hover:shadow-lg transition-all">提交需求</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="bg-gray-800 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- 关于我们 -->
+        <div>
+          <h3 class="text-xl font-bold mb-4">鼎伴学华中交付中心</h3>
+          <p class="text-gray-400">让每个孩子都能享受优质数字化教育</p>
+        </div>
+        <!-- 快速链接 -->
+        <div>
+          <h3 class="text-lg font-bold mb-4">快速链接</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">华中区简介</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">华中区官网</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">加入我们</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">隐私政策</a></li>
+          </ul>
+        </div>
+        <!-- 联系我们 -->
+        <div>
+          <h3 class="text-lg font-bold mb-4">联系我们</h3>
+          <ul class="space-y-2 text-gray-400">
+            <li>地址：桂林市七星区</li>
+            <li>电话：027-8888 6666</li>
+            <li>邮箱：hb@dingbanxue.com</li>
+          </ul>
+        </div>
+        <!-- 关注我们 -->
+        <div>
+          <h3 class="text-lg font-bold mb-4">关注我们</h3>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"></path>
+              </svg>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- 版权信息 -->
+      <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+        <p>© 2024 鼎伴学华中交付中心 版权所有 | 粤ICP备2023116567号</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 粒子效果脚本 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+  <!-- 自定义脚本 -->
+  <script>
+    // 移动端菜单切换
+    document.getElementById('menuToggle').addEventListener('click', function() {
+      const navMenu = document.getElementById('navMenu');
+      navMenu.classList.toggle('hidden');
+      navMenu.classList.toggle('flex');
+      navMenu.classList.toggle('flex-col');
+      navMenu.classList.toggle('absolute');
+      navMenu.classList.toggle('top-16');
+      navMenu.classList.toggle('left-0');
+      navMenu.classList.toggle('right-0');
+      navMenu.classList.toggle('bg-white');
+      navMenu.classList.toggle('p-4');
+      navMenu.classList.toggle('shadow-md');
+      navMenu.classList.toggle('space-y-4');
+    });
+
+    // 粒子效果初始化
+    particlesJS('particles-js', {
+      particles: {
+        number: { value: 80, density: { enable: true, value_area: 800 } },
+        color: { value: "#3b82f6" },
+        shape: { type: "circle" },
+        opacity: { value: 0.5, random: true },
+        size: { value: 3, random: true },
+        line_linked: { enable: true, distance: 150, color: "#8b5cf6", opacity: 0.4, width: 1 },
+        move: { enable: true, speed: 2, direction: "none", random: true, straight: false, out_mode: "out" }
+      },
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: { enable: true, mode: "repulse" },
+          onclick: { enable: true, mode: "push" }
+        }
+      }
+    });
+
+    // 表单提交处理
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      const data = Object.fromEntries(formData.entries());
+      
+      // 存储到localStorage
+      localStorage.setItem('contactFormData', JSON.stringify(data));
+      
+      alert('您的需求已提交，我们将尽快与您联系！');
+      this.reset();
+    });
+
+    // 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if(targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if(targetElement) {
+          targetElement.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

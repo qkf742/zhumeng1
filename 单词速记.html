@@ -1,0 +1,398 @@
+
+<!-- dingbanxue_vocabulary_showcase/frontend/index.html -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>鼎伴学单词速记法</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.loli.net/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Noto Sans SC', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
+    }
+    .nav-link {
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: #4f46e5;
+      transition: all 0.3s ease;
+    }
+    .nav-link:hover::after {
+      width: 100%;
+      left: 0;
+    }
+    .method-card {
+      transition: all 0.3s ease;
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(10px);
+    }
+    .method-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    .bookmark-btn {
+      transition: all 0.3s ease;
+    }
+    .bookmark-btn.active {
+      color: #f59e0b;
+    }
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+    .content-section {
+      scroll-margin-top: 100px;
+    }
+  </style>
+</head>
+<body class="text-gray-800">
+  <div id="particles-js"></div>
+  
+  <header class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-6 shadow-lg">
+    <div class="container mx-auto px-4">
+      <h1 class="text-3xl md:text-4xl font-bold text-center">鼎伴学单词速记法</h1>
+      <p class="text-center mt-2 opacity-90">科学记忆 · 高效学习</p>
+    </div>
+  </header>
+
+<nav class="sticky top-0 bg-white shadow-md z-10">
+  <div class="container mx-auto px-4 py-3 flex overflow-x-auto hide-scrollbar">
+    <!-- 添加一个 flex 容器，将链接居中 -->
+    <div class="flex-1 flex justify-center">
+      <a href="#overview" class="nav-link px-4 py-2 text-sm md:text-base font-medium text-gray-700 hover:text-indigo-600">概述</a>
+      <a href="#methods" class="nav-link px-4 py-2 text-sm md:text-base font-medium text-gray-700 hover:text-indigo-600">方法对比</a>
+      <a href="#features" class="nav-link px-4 py-2 text-sm md:text-base font-medium text-gray-700 hover:text-indigo-600">核心特点</a>
+      <a href="#benefits" class="nav-link px-4 py-2 text-sm md:text-base font-medium text-gray-700 hover:text-indigo-600">学习优势</a>
+    </div>
+    <!-- 书签按钮仍然靠右 -->
+    <div class="ml-auto flex items-center">
+      <button id="toggle-bookmarks" class="text-gray-500 hover:text-indigo-600 ml-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+  <main class="container mx-auto px-4 py-8">
+    <!-- 概述部分 -->
+    <section id="overview" class="content-section mb-16 method-card rounded-xl p-6 shadow-md">
+      <div class="flex flex-col md:flex-row items-center">
+        <div class="md:w-1/2 mb-6 md:mb-0 md:pr-8">
+          <img src="https://picsum.photos/600/400?random=1" alt="单词速记法" class="rounded-lg shadow-lg w-full">
+        </div>
+        <div class="md:w-1/2">
+          <h2 class="text-2xl font-bold mb-4 text-indigo-700">单词速记法概述</h2>
+          <p class="mb-4 text-gray-700 leading-relaxed">鼎伴学单词速记法是一套基于认知科学原理的高效记忆系统，通过科学分组、场景迁移和情感诱导等方法，帮助学习者快速掌握大量词汇。</p>
+          <button class="bookmark-btn absolute top-4 right-4 text-gray-300 hover:text-yellow-500" data-section="overview">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 方法对比部分 -->
+    <section id="methods" class="content-section mb-16">
+      <h2 class="text-2xl font-bold mb-8 text-center text-indigo-700">记忆方法对比</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="method-card rounded-xl p-6 shadow-md relative">
+          <h3 class="text-xl font-semibold mb-3 text-indigo-600">组块编码扩容法</h3>
+          <p class="text-gray-700 mb-4">将单词分解为更小的记忆单元，扩大记忆容量</p>
+          <div class="flex justify-between items-center">
+            <span class="text-sm text-gray-500">记忆效率: ⭐⭐⭐⭐⭐</span>
+            <button class="bookmark-btn text-gray-300 hover:text-yellow-500" data-section="chunking">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="method-card rounded-xl p-6 shadow-md relative">
+          <h3 class="text-xl font-semibold mb-3 text-indigo-600">忆步批量处理法</h3>
+          <p class="text-gray-700 mb-4">分步骤记忆，逐步增加记忆负担</p>
+          <div class="flex justify-between items-center">
+            <span class="text-sm text-gray-500">记忆持久性: ⭐⭐⭐⭐</span>
+            <button class="bookmark-btn text-gray-300 hover:text-yellow-500" data-section="batch">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="method-card rounded-xl p-6 shadow-md relative">
+          <h3 class="text-xl font-semibold mb-3 text-indigo-600">场景迁移程序法</h3>
+          <p class="text-gray-700 mb-4">将单词放入不同语境增强记忆关联</p>
+          <div class="flex justify-between items-center">
+            <span class="text-sm text-gray-500">应用能力: ⭐⭐⭐⭐⭐</span>
+            <button class="bookmark-btn text-gray-300 hover:text-yellow-500" data-section="context">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 核心特点部分 -->
+    <section id="features" class="content-section mb-16">
+      <h2 class="text-2xl font-bold mb-8 text-center text-indigo-700">核心特点</h2>
+      <div class="space-y-6">
+        <div class="method-card rounded-xl p-6 shadow-md relative">
+          <div class="flex items-start">
+            <div class="flex-shrink-0 bg-indigo-100 rounded-lg p-3 mr-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold mb-2 text-indigo-600">科学记忆原理</h3>
+              <p class="text-gray-700">基于艾宾浩斯遗忘曲线和认知心理学原理设计，符合大脑记忆规律</p>
+            </div>
+            <button class="bookmark-btn absolute top-4 right-4 text-gray-300 hover:text-yellow-500" data-section="science">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="method-card rounded-xl p-6 shadow-md relative">
+          <div class="flex items-start">
+            <div class="flex-shrink-0 bg-indigo-100 rounded-lg p-3 mr-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold mb-2 text-indigo-600">高效学习系统</h3>
+              <p class="text-gray-700">结合多种记忆方法，形成完整学习闭环，提高记忆效率300%</p>
+            </div>
+            <button class="bookmark-btn absolute top-4 right-4 text-gray-300 hover:text-yellow-500" data-section="efficiency">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 学习优势部分 -->
+    <section id="benefits" class="content-section mb-16">
+      <h2 class="text-2xl font-bold mb-8 text-center text-indigo-700">学习优势</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="method-card rounded-xl p-6 shadow-md relative">
+          <h3 class="text-xl font-semibold mb-3 text-indigo-600">快速记忆</h3>
+          <p class="text-gray-700 mb-4">通过科学分组和编码技术，记忆速度提升3-5倍</p>
+          <button class="bookmark-btn absolute top-4 right-4 text-gray-300 hover:text-yellow-500" data-section="fast">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z" />
+            </svg>
+          </button>
+        </div>
+        <div class="method-card rounded-xl p-6 shadow-md relative">
+          <h3 class="text-xl font-semibold mb-3 text-indigo-600">持久记忆</h3>
+          <p class="text-gray-700 mb-4">九宫循环筛查法确保记忆长期保持，遗忘率降低70%</p>
+          <button class="bookmark-btn absolute top-4 right-4 text-gray-300 hover:text-yellow-500" data-section="long">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-gray-800 text-white py-8">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-4 md:mb-0">
+          <h3 class="text-xl font-bold">鼎伴学单词速记法</h3>
+          <p class="text-gray-400 mt-2">科学记忆 · 高效学习</p>
+        </div>
+        <div class="flex space-x-6">
+          <a href="#" class="text-gray-300 hover:text-white transition">关于我们</a>
+          <a href="#" class="text-gray-300 hover:text-white transition">联系方式</a>
+          <a href="#" class="text-gray-300 hover:text-white transition">隐私政策</a>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 mt-6 pt-6 text-center text-gray-400">
+        <p>© 2025 鼎伴学教育科技. 保留所有权利.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 书签面板 -->
+  <div id="bookmarks-panel" class="fixed inset-y-0 right-0 w-64 bg-white shadow-lg transform translate-x-full transition-transform duration-300 z-20">
+    <div class="p-4 border-b border-gray-200 flex justify-between items-center">
+      <h3 class="text-lg font-semibold">我的书签</h3>
+      <button id="close-bookmarks" class="text-gray-500 hover:text-gray-700">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </button>
+    </div>
+    <div id="bookmarks-list" class="p-4 overflow-y-auto">
+      <!-- 书签将在这里动态生成 -->
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    // 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // 书签功能
+    const bookmarks = JSON.parse(localStorage.getItem('vocabulary-bookmarks')) || [];
+    
+    function updateBookmarks() {
+      localStorage.setItem('vocabulary-bookmarks', JSON.stringify(bookmarks));
+      renderBookmarks();
+    }
+    
+    function renderBookmarks() {
+      const bookmarksList = document.getElementById('bookmarks-list');
+      bookmarksList.innerHTML = '';
+      
+      if (bookmarks.length === 0) {
+        bookmarksList.innerHTML = '<p class="text-gray-500 text-center py-4">暂无书签</p>';
+        return;
+      }
+      
+      bookmarks.forEach(bookmark => {
+        const bookmarkItem = document.createElement('div');
+        bookmarkItem.className = 'mb-2 p-2 hover:bg-gray-100 rounded cursor-pointer flex justify-between items-center';
+        bookmarkItem.innerHTML = `
+          <span>${bookmark.title}</span>
+          <button class="remove-bookmark text-red-400 hover:text-red-600" data-id="${bookmark.id}">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+            </svg>
+          </button>
+        `;
+        bookmarkItem.addEventListener('click', () => {
+          const target = document.querySelector(`[data-section="${bookmark.section}"]`).closest('.content-section');
+          if (target) {
+            window.scrollTo({
+              top: target.offsetTop - 80,
+              behavior: 'smooth'
+            });
+            document.getElementById('bookmarks-panel').classList.remove('translate-x-0');
+            document.getElementById('bookmarks-panel').classList.add('translate-x-full');
+          }
+        });
+        bookmarksList.appendChild(bookmarkItem);
+      });
+      
+      document.querySelectorAll('.remove-bookmark').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const id = btn.getAttribute('data-id');
+          const index = bookmarks.findIndex(b => b.id === id);
+          if (index !== -1) {
+            bookmarks.splice(index, 1);
+            updateBookmarks();
+            
+            // 更新对应按钮状态
+            const bookmarkBtn = document.querySelector(`[data-section="${btn.getAttribute('data-id').split('-')[0]}"]`);
+            if (bookmarkBtn) {
+              bookmarkBtn.classList.remove('active');
+            }
+          }
+        });
+      });
+    }
+    
+    document.querySelectorAll('.bookmark-btn').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const section = this.getAttribute('data-section');
+        const title = this.closest('.method-card').querySelector('h2, h3').textContent;
+        const id = `${section}-${Date.now()}`;
+        
+        const existingIndex = bookmarks.findIndex(b => b.section === section);
+        
+        if (existingIndex !== -1) {
+          bookmarks.splice(existingIndex, 1);
+          this.classList.remove('active');
+        } else {
+          bookmarks.push({ id, section, title });
+          this.classList.add('active');
+        }
+        
+        updateBookmarks();
+      });
+    });
+    
+    document.getElementById('toggle-bookmarks').addEventListener('click', () => {
+      const panel = document.getElementById('bookmarks-panel');
+      panel.classList.toggle('translate-x-0');
+      panel.classList.toggle('translate-x-full');
+    });
+    
+    document.getElementById('close-bookmarks').addEventListener('click', () => {
+      document.getElementById('bookmarks-panel').classList.remove('translate-x-0');
+      document.getElementById('bookmarks-panel').classList.add('translate-x-full');
+    });
+    
+    // 初始化粒子效果
+    particlesJS('particles-js', {
+      particles: {
+        number: { value: 80, density: { enable: true, value_area: 800 } },
+        color: { value: "#4f46e5" },
+        shape: { type: "circle" },
+        opacity: { value: 0.5, random: true },
+        size: { value: 3, random: true },
+        line_linked: { enable: true, distance: 150, color: "#a5b4fc", opacity: 0.4, width: 1 },
+        move: { enable: true, speed: 2, direction: "none", random: true, straight: false, out_mode: "out" }
+      },
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: { enable: true, mode: "grab" },
+          onclick: { enable: true, mode: "push" }
+        }
+      }
+    });
+    
+    // 初始化页面时检查哪些部分已被收藏
+    document.addEventListener('DOMContentLoaded', () => {
+      renderBookmarks();
+      
+      bookmarks.forEach(bookmark => {
+        const btn = document.querySelector(`[data-section="${bookmark.section}"]`);
+        if (btn) {
+          btn.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

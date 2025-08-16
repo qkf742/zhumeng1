@@ -1,0 +1,395 @@
+<!-- english_learning_platform/frontend/account_guide/index.html -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>账号注册指引 | 鼎伴学</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.loli.net/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <style>
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.6s ease forwards;
+    }
+    .tab-button {
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .tab-button::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 3px;
+      bottom: 0;
+      left: 0;
+      background: linear-gradient(90deg, #667eea, #764ba2);
+      transition: width 0.3s ease;
+    }
+    .tab-button.active::after {
+      width: 100%;
+    }
+    .step-card {
+      backdrop-filter: blur(16px) saturate(180%);
+      background-color: rgba(255, 255, 255, 0.85);
+      border-radius: 16px;
+      border: 1px solid rgba(209, 213, 219, 0.3);
+      transition: all 0.4s ease;
+    }
+    .step-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    .step-indicator {
+      position: relative;
+      height: 4px;
+      background-color: #e2e8f0;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .step-progress {
+      position: absolute;
+      height: 100%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      transition: width 0.4s ease;
+    }
+    .step-number {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      margin-right: 12px;
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .floating {
+      animation: floating 3s ease-in-out infinite;
+    }
+    @keyframes floating {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
+  <div id="particles-js"></div>
+  
+  <div class="container mx-auto px-4 py-16 max-w-4xl">
+    <div class="text-center mb-16">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gray-800">账号<span class="gradient-text">注册指引</span></h1>
+      <p class="text-xl text-gray-600">选择您的注册方式，跟随步骤完成账号注册</p>
+    </div>
+
+    <div class="flex justify-center mb-12">
+      <div class="bg-white rounded-full shadow-md p-1 inline-flex">
+        <button class="tab-button px-6 py-2 font-medium text-gray-700 active" data-tab="method1">微信小程序注册</button>
+        <button class="tab-button px-6 py-2 font-medium text-gray-700" data-tab="method2">电脑应用注册</button>
+      </div>
+    </div>
+
+    <!-- 方法一：微信小程序注册 -->
+    <div id="method1" class="tab-content active">
+      <div class="step-indicator mb-12">
+        <div class="step-progress" style="width: 33%"></div>
+      </div>
+
+      <div class="grid grid-cols-1 gap-8">
+        <!-- 步骤1 -->
+        <div class="step-card p-8 animate-fadeInUp delay-1">
+          <div class="flex items-start mb-6">
+            <div class="step-number">1</div>
+            <div>
+              <h2 class="text-2xl font-bold text-gray-800 mb-2">进入注册页面</h2>
+              <p class="text-gray-600">通过微信小程序进入注册界面</p>
+            </div>
+          </div>
+          <div class="space-y-4">
+            <div class="flex items-start">
+              <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-1">
+                <i class="fas fa-check text-blue-500 text-sm"></i>
+              </div>
+              <p class="text-gray-700 flex-1">打开微信并进入相关的小程序</p>
+            </div>
+            <div class="flex items-start">
+              <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-1">
+                <i class="fas fa-check text-blue-500 text-sm"></i>
+              </div>
+              <p class="text-gray-700 flex-1">在登录页面，点击"注册"按钮，进入用户注册页面</p>
+            </div>
+          </div>
+          <div class="rounded-xl overflow-hidden shadow-lg floating mt-6">
+            <img src="https://picsum.photos/800/500?random=1" alt="登录步骤" class="w-full h-auto">
+          </div>
+        </div>
+
+        <!-- 步骤2 -->
+        <div class="step-card p-8 animate-fadeInUp delay-2">
+          <div class="flex items-start mb-6">
+            <div class="step-number">2</div>
+            <div>
+              <h2 class="text-2xl font-bold text-gray-800 mb-2">填写注册信息</h2>
+              <p class="text-gray-600">完善您的个人信息和安全验证</p>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+              <div class="flex items-center mb-4">
+                <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center mr-3">
+                  <i class="fas fa-user text-green-500"></i>
+                </div>
+                <h3 class="font-medium text-gray-800">基本信息</h3>
+              </div>
+              <ul class="space-y-2 text-gray-600">
+                <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> 输入您的姓名</li>
+                <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> 选择性别</li>
+                <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> 输入学校信息</li>
+                <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> 选择年级</li>
+              </ul>
+            </div>
+            
+            <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+              <div class="flex items-center mb-4">
+                <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                  <i class="fas fa-lock text-blue-500"></i>
+                </div>
+                <h3 class="font-medium text-gray-800">安全信息</h3>
+              </div>
+              <ul class="space-y-2 text-gray-600">
+                <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> 国家/地区</li>
+                <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> 手机号码</li>
+                <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> 图形验证码</li>
+                <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> 短信验证码</li>
+                <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> 设置密码</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 步骤3 -->
+        <div class="step-card p-8 animate-fadeInUp delay-3">
+          <div class="flex items-start mb-6">
+            <div class="step-number">3</div>
+            <div>
+              <h2 class="text-2xl font-bold text-gray-800 mb-2">完成注册</h2>
+              <p class="text-gray-600">确认信息并完成注册流程</p>
+            </div>
+          </div>
+          <div class="space-y-4">
+            <div class="flex items-start">
+              <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-1">
+                <i class="fas fa-check text-blue-500 text-sm"></i>
+              </div>
+              <p class="text-gray-700 flex-1">确认所有信息无误后，点击"立即注册"按钮完成注册</p>
+            </div>
+            <div class="flex items-start">
+              <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-1">
+                <i class="fas fa-check text-blue-500 text-sm"></i>
+              </div>
+              <p class="text-gray-700 flex-1">注册成功后，您可以进入"个人中心"查看和管理个人信息</p>
+            </div>
+          </div>
+          <div class="mt-8">
+            <a href="../account_register/index.html" class="w-full py-4 px-6 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 block text-center">
+              立即注册 <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 方法二：电脑应用注册 -->
+    <div id="method2" class="tab-content">
+      <div class="step-indicator mb-12">
+        <div class="step-progress" style="width: 33%"></div>
+      </div>
+
+      <div class="grid grid-cols-1 gap-8">
+        <!-- 步骤1 -->
+        <div class="step-card p-8 animate-fadeInUp delay-1">
+          <div class="flex items-start mb-6">
+            <div class="step-number">1</div>
+            <div>
+              <h2 class="text-2xl font-bold text-gray-800 mb-2">打开应用程序</h2>
+              <p class="text-gray-600">启动电脑上的应用程序</p>
+            </div>
+          </div>
+          <div class="space-y-4">
+            <div class="flex items-start">
+              <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-1">
+                <i class="fas fa-check text-blue-500 text-sm"></i>
+              </div>
+              <p class="text-gray-700 flex-1">在电脑上打开相关的应用程序</p>
+            </div>
+            <div class="flex items-start">
+              <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-1">
+                <i class="fas fa-check text-blue-500 text-sm"></i>
+              </div>
+              <p class="text-gray-700 flex-1">查看欢迎信息和当前时间</p>
+            </div>
+          </div>
+          <div class="rounded-xl overflow-hidden shadow-lg floating mt-6">
+            <img src="https://picsum.photos/800/500?random=3" alt="登录步骤" class="w-full h-auto">
+          </div>
+        </div>
+
+        <!-- 步骤2 -->
+        <div class="step-card p-8 animate-fadeInUp delay-2">
+          <div class="flex items-start mb-6">
+            <div class="step-number">2</div>
+            <div>
+              <h2 class="text-2xl font-bold text-gray-800 mb-2">进入注册页面</h2>
+              <p class="text-gray-600">选择注册方式并进入注册页面</p>
+            </div>
+          </div>
+          <div class="space-y-4">
+            <div class="flex items-start">
+              <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-1">
+                <i class="fas fa-check text-blue-500 text-sm"></i>
+              </div>
+              <p class="text-gray-700 flex-1">在登录页面选择"新增学员"进行注册</p>
+            </div>
+            <div class="flex items-start">
+              <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-1">
+                <i class="fas fa-check text-blue-500 text-sm"></i>
+              </div>
+              <p class="text-gray-700 flex-1">点击"新增学员"按钮，进入注册新用户页面</p>
+            </div>
+          </div>
+          <div class="rounded-xl overflow-hidden shadow-lg floating mt-6">
+            <img src="https://picsum.photos/800/500?random=4" alt="注册步骤" class="w-full h-auto">
+          </div>
+        </div>
+
+        <!-- 步骤3 -->
+        <div class="step-card p-8 animate-fadeInUp delay-3">
+          <div class="flex items-start mb-6">
+            <div class="step-number">3</div>
+            <div>
+              <h2 class="text-2xl font-bold text-gray-800 mb-2">填写注册信息</h2>
+              <p class="text-gray-600">完善您的个人信息和安全验证</p>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+              <div class="flex items-center mb-4">
+                <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center mr-3">
+                  <i class="fas fa-user text-green-500"></i>
+                </div>
+                <h3 class="font-medium text-gray-800">基本信息</h3>
+              </div>
+              <ul class="space-y-2 text-gray-600">
+                <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> 输入您的姓名</li>
+                <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> 输入学校信息</li>
+                <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> 输入年级信息</li>
+              </ul>
+            </div>
+            
+            <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+              <div class="flex items-center mb-4">
+                <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                  <i class="fas fa-lock text-blue-500"></i>
+                </div>
+                <h3 class="font-medium text-gray-800">安全信息</h3>
+              </div>
+              <ul class="space-y-2 text-gray-600">
+                <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> 国家/地区</li>
+                <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> 手机号码</li>
+                <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> 设置密码</li>
+                <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> 确认密码</li>
+              </ul>
+            </div>
+          </div>
+          <div class="mt-8">
+            <a href="../account_register/index.html" class="w-full py-4 px-6 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 block text-center">
+              立即注册 <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      particlesJS('particles-js', {
+        particles: {
+          number: { value: 60, density: { enable: true, value_area: 800 } },
+          color: { value: "#4fd1c5" },
+          shape: { type: "circle" },
+          opacity: { value: 0.5, random: true },
+          size: { value: 3, random: true },
+          line_linked: { enable: true, distance: 150, color: "#4fd1c5", opacity: 0.4, width: 1 },
+          move: { enable: true, speed: 2, direction: "none", random: true, straight: false, out_mode: "out" }
+        },
+        interactivity: {
+          detect_on: "canvas",
+          events: {
+            onhover: { enable: true, mode: "repulse" },
+            onclick: { enable: true, mode: "push" }
+          }
+        }
+      });
+
+      // 标签页切换
+      const tabButtons = document.querySelectorAll('.tab-button');
+      const tabContents = document.querySelectorAll('.tab-content');
+
+      tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const tabId = button.getAttribute('data-tab');
+          
+          // 更新按钮状态
+          tabButtons.forEach(btn => btn.classList.remove('active'));
+          button.classList.add('active');
+          
+          // 更新内容显示
+          tabContents.forEach(content => content.classList.remove('active'));
+          document.getElementById(tabId).classList.add('active');
+        });
+      });
+
+      // 动画触发
+      const animateOnScroll = () => {
+        const elements = document.querySelectorAll('[data-animate]');
+        elements.forEach(el => {
+          const rect = el.getBoundingClientRect();
+          const isVisible = rect.top <= window.innerHeight * 0.8;
+          if (isVisible) el.classList.add('animate');
+        });
+      };
+
+      window.addEventListener('scroll', animateOnScroll);
+      animateOnScroll();
+    });
+  </script>
+</body>
+</html>
+

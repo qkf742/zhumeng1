@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>鼎伴学华中区交付中心 - 登录</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.loli.net/css?family=Noto+Sans+SC:400,500,700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Noto Sans SC', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+    .login-container {
+      width: 100%;
+      max-width: 400px;
+      transition: all 0.5s ease;
+    }
+    .login-card {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      overflow: hidden;
+      transform: translateY(0);
+      transition: all 0.3s ease;
+    }
+    .login-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+    .gradient-text {
+      background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .mode-switch {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    .mode-switch button {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      background: transparent;
+      font-weight: 500;
+      cursor: pointer;
+      position: relative;
+      z-index: 1;
+      color: #4b5563;
+      transition: all 0.3s ease;
+    }
+    .mode-switch button.active {
+      color: #3b82f6;
+    }
+    .mode-switch .slider {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50%;
+      height: 100%;
+      background: white;
+      border-radius: 9999px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: #374151;
+    }
+    .form-control {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+    .form-control:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    }
+    .btn-login {
+      width: 100%;
+      padding: 0.75rem;
+      background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .btn-login:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .guest-mode {
+      display: none;
+    }
+    .professional-mode {
+      display: block;
+    }
+    .mode-switch.professional .slider {
+      transform: translateX(100%);
+    }
+    .mode-switch.guest .slider {
+      transform: translateX(0);
+    }
+    .mode-switch.professional ~ .professional-mode {
+      display: block;
+    }
+    .mode-switch.professional ~ .guest-mode {
+      display: none;
+    }
+    .mode-switch.guest ~ .professional-mode {
+      display: none;
+    }
+    .mode-switch.guest ~ .guest-mode {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div id="particles-js" class="particles-js"></div>
+  
+  <div class="login-container px-4">
+    <div class="login-card p-8">
+      <h1 class="text-3xl font-bold text-center mb-8 gradient-text">鼎伴学华中区交付</h1>
+      
+      <div class="mode-switch professional">
+        <button class="active" onclick="switchMode('professional')">专业模式</button>
+        <button onclick="switchMode('guest')">访客模式</button>
+        <div class="slider"></div>
+      </div>
+      
+      <!-- 专业模式登录表单 -->
+      <div class="professional-mode">
+        <form id="professionalForm" class="mb-4">
+          <div class="form-group">
+            <label for="username">用户名</label>
+            <input type="text" id="username" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="password">密码</label>
+            <input type="password" id="password" class="form-control" required>
+          </div>
+          <div class="form-group flex items-center justify-between">
+            <div class="flex items-center">
+              <input type="checkbox" id="remember" class="mr-2">
+              <label for="remember" class="text-sm text-gray-600">记住我</label>
+            </div>
+            <a href="#" class="text-sm text-blue-500 hover:underline">忘记密码?</a>
+          </div>
+          <button type="submit" class="btn-login mb-4">登录</button>
+        </form>
+      </div>
+      
+      <!-- 访客模式登录表单 -->
+      <div class="guest-mode">
+        <form id="guestForm" class="mb-4">
+          <div class="form-group">
+            <label for="guestName">昵称</label>
+            <input type="text" id="guestName" class="form-control" placeholder="请输入您的昵称" required>
+          </div>
+          <div class="form-group">
+            <label for="guestPurpose">访问目的</label>
+            <select id="guestPurpose" class="form-control" required>
+              <option value="">请选择访问目的</option>
+              <option value="learn">了解交付中心</option>
+              <option value="demo">体验演示</option>
+              <option value="other">其他</option>
+            </select>
+          </div>
+          <button type="submit" class="btn-login mb-4">进入访客模式</button>
+        </form>
+        <p class="text-center text-sm text-gray-500">访客模式功能受限，如需完整功能请使用专业模式登录</p>
+      </div>
+      
+      
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+  // 粒子效果初始化
+  particlesJS('particles-js', {
+    particles: {
+      number: { value: 60, density: { enable: true, value_area: 800 } },
+      color: { value: "#3b82f6" },
+      shape: { type: "circle" },
+      opacity: { value: 0.5, random: true },
+      size: { value: 3, random: true },
+      line_linked: { enable: true, distance: 150, color: "#8b5cf6", opacity: 0.4, width: 1 },
+      move: { enable: true, speed: 2, direction: "none", random: true, straight: false, out_mode: "out" }
+    },
+    interactivity: {
+      detect_on: "canvas",
+      events: {
+        onhover: { enable: true, mode: "repulse" },
+        onclick: { enable: true, mode: "push" }
+      }
+    }
+  });
+
+  // 模式切换
+  function switchMode(mode) {
+    const modeSwitch = document.querySelector('.mode-switch');
+    modeSwitch.classList.remove('professional', 'guest');
+    modeSwitch.classList.add(mode);
+    
+    const buttons = modeSwitch.querySelectorAll('button');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    
+    if (mode === 'professional') {
+      buttons[0].classList.add('active');
+    } else {
+      buttons[1].classList.add('active');
+    }
+  }
+
+  // 专业模式表单提交
+  document.getElementById('professionalForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    const remember = document.getElementById('remember').checked;
+    
+    // 验证用户名和密5
+    if ((username === '101' || username === '102' || username === '103' || username === '104' || username === '103' || username === '106' || username === '107' || username === '108') && password === '123456789')  {
+      // 存储登录状态
+      if (remember) {
+        localStorage.setItem('dingbanxue_username', username);
+      } else {
+        localStorage.removeItem('dingbanxue_username');
+      }
+      
+      // 模拟登录成功
+      alert('登录成功，正在跳转...');
+      window.location.href = '主页面.html'; // 修改为 index.html
+    } else {
+      alert('用户名或密码错误，请重新输入！');
+    }
+  });
+
+  // 访客模式表单提交
+document.getElementById('guestForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const guestName = document.getElementById('guestName').value;
+  const purpose = document.getElementById('guestPurpose').value;
+  
+  if (!guestName || !purpose) {
+    alert('请输入昵称并选择访问目的');
+    return;
+  }
+  
+  // 存储访客信息
+  localStorage.setItem('dingbanxue_guest', JSON.stringify({
+    name: guestName,
+    purpose: purpose,
+    timestamp: new Date().getTime()
+  }));
+  
+  alert(`欢迎您，${guestName}！正在进入访客模式...`);
+  window.location.href = '访客界面.html'; // 修改为跳转到 index.html
+});
+
+  // 检查是否有记住的用户名
+  window.addEventListener('DOMContentLoaded', function() {
+    const savedUsername = localStorage.getItem('dingbanxue_username');
+    if (savedUsername) {
+      document.getElementById('username').value = savedUsername;
+      document.getElementById('remember').checked = true;
+    }
+  });
+</script>
+</body>
+</html>
